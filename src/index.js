@@ -1,17 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './styles/index.scss';
+import Meteo from './components/Meteo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        <Meteo city="Luneville" zipcode="54300" countrycode="fr"/>
+        <Meteo city="Nancy" zipcode="54000" countrycode="fr" />
+        <Meteo city="Toulouse" zipcode="31000" countrycode="fr" />
+        <Meteo city="Le Lamentin" zipcode="97232" countrycode="mq"/>
+    </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

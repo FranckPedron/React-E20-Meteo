@@ -7,14 +7,21 @@ function Meteo({city, zipcode, countrycode}) {
     const [temperature, setTemperature] = useState(0);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
+        // if (process.env.NODE_ENV === 'production') {
         const fetchTemp = async () => {
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},${countrycode}&appid=dbb26eee436c3f9212215aef4339d66f&units=metric`);
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},${countrycode}&appid=${process.env.REACT_APP_API_KEY}&units=metric`);
 
             setTemperature(response.data.main.temp);
             setLoading(false);
         };
         fetchTemp();
-    }, []);
+        // }
+        // else {
+        //     setTemperature(20);
+        //     setLoading(false);
+        // }
+
+    }, [zipcode, countrycode]);
     return (
         <article className="meteo">
             <h2 className="meteo-title">Météo à {city}</h2>
